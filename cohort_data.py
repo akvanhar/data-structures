@@ -183,10 +183,28 @@ def find_name_duplicates(filename):
 
     duplicate_names = set()
 
-    # Code goes here
+    winter_15 = set()
+    spring_15 = set()
+    summer_15 = set()
+    tas = set()
 
-    return duplicate_names
+    cohort_file = open("cohort_data.txt")
 
+    for line in cohort_file:
+        line = line.rstrip()
+        line = line.split("|")
+        if line[4] == "Winter 2015" and line[4] != "":
+            winter_15.add(line[0])
+        if line[4] == "Spring 2015" and line[4] != "":
+            spring_15.add(line[0])
+        if line[4] == "Summer 2015" and line[4] != "":
+            summer_15.add(line[0])
+        if line[3] not in tas and line[3] != "":
+            tas.add(line[0])
+
+    common_names = winter_15 & spring_15 & summer_15
+
+    return common_names
 
 def find_house_members_by_student_name(student_list):
     """TODO: Create a function that, when given a name, returns everyone in
