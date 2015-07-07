@@ -97,8 +97,7 @@ def students_by_house(filename):
     cohort_file = open(filename)
 
     for line in cohort_file:
-        line = line.rstrip()
-        line = line.split("|")
+        line = line.rstrip().split("|")
         
         last_name = line[1]
         house = line[2]
